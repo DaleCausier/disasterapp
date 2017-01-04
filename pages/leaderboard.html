@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <title>Leaderboard Page</title>
+    <link rel="stylesheet" type="text/css" href="../css/leaderboard.css"/>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <style>*{-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}</style> 
+</head>
+<body>
+<script>
+$(document).ready(function(){
+// Load the SDK Asynchronously
+(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+// Init the SDK upon load
+window.fbAsyncInit = function() {
+    FB.init({
+    appId      : '789057774580217',
+    cookie     : true,  // enable cookies to allow the server to access 
+                        // the session
+    xfbml      : true,  // parse social plugins on this page
+    version    : 'v2.8' // use graph api version 2.8
+    });
+
+    checkloggedin();
+}
+
+function checkloggedin(){
+    FB.getLoginStatus(function(response) {
+    if (response.status === 'connected') {
+        // the user is logged in and has authenticated your
+        // app, and response.authResponse supplies
+        // the user's ID, a valid access token, a signed
+        // request, and the time the access token 
+        // and signed request each expire
+        var uid = response.authResponse.userID;
+        var accessToken = response.authResponse.accessToken;
+        var AccessToken = localStorage.getItem("LocalAccessToken");
+        var UserID = localStorage.getItem("LocalUserID");
+
+        jQuery.ajax({
+            type: "POST",
+            url: 'http://ct6014-causier.studentsites.glos.ac.uk/php/getleaderboardcontent.php',
+            data: {
+                accesstoken: AccessToken, 
+                userID: UserID
+            }
+        })
+        .done(function(result) {
+            document.getElementById('resultsdiv').innerHTML = result;
+            getleaderboard();
+        });
+    } else if (response.status === 'not_authorized') {
+        // the user is logged in to Facebook, 
+        // but has not authenticated your app
+        window.location.href = '../index.html';
+    } else {
+        // the user isn't logged in to Facebook.
+        window.location.href = '../index.html';
+    }
+    });
+}
+
+function getleaderboard(){
+    FB.api(
+    '/me',
+    'GET',
+    {"fields":"id"},
+    function(response) {
+        console.log(response.id)
+        facebookID = response.id;
+        jQuery.ajax({
+            type: "POST",
+            url: 'http://ct6014-causier.studentsites.glos.ac.uk/php/getleaderboard.php',
+            data: {id: facebookID}
+        })
+        //show the game over view with the current score and highscore.
+        .done(function(result) {
+            document.getElementById('leaderboard').innerHTML = result;
+            checkrank();
+        });
+    }
+    );
+}
+
+function checkrank(){
+    console.log($('#userrank').text());
+    if($('#userrank').text() == "1"){
+        $(".currentuser").css('color', 'gold');
+    }
+    else if($('#userrank').text() == "2"){
+        $(".currentuser").css('color', '#eaeaea');
+    }
+    else if($('#userrank').text() == "3"){
+        $(".currentuser").css('color', 'saddlebrown');
+    }
+}
+
+$(document).on('click', '#menubutton', function(){
+    window.location.href = 'menu.html';
+})
+
+});
+</script>
+<div id="resultsdiv"></div>    
+</body>
+</html>

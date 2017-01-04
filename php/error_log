@@ -1,0 +1,2 @@
+[03-Jan-2017 16:49:01 UTC] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home/ct6014dale/public_html/php/facebook-login.php on line 19
+[03-Jan-2017 16:49:02 UTC] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home/ct6014dale/public_html/php/functions.php on line 11

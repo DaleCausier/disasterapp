@@ -1,0 +1,216 @@
+@font-face{
+    font-family: "DisasterFont";
+    src: url(../fonts/04b19.ttf);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    font-family: DisasterFont;
+}
+
+/*#svgstyles{
+    position: relative;
+    z-index: 10;
+}*/
+
+#rollercontainer{
+    position: absolute;
+    z-index: 10;
+    height: 100vh;
+    width: 100vw;
+}
+
+#roof{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 20vh;
+    background-color: #EE7FB3;
+}
+
+#roller{
+    position: absolute;
+    left: 0;
+    top: 10vh;
+    width: 100vw;
+    height: 24vh;
+    background-color: #F39CC4;
+    border-radius: 8vh;
+    -moz-border-radius: 8vh;
+	-webkit-border-radius: 8vh;
+}
+
+#rollerinner{
+    position: absolute;
+    left: 2vh;
+    top: 14vh;
+    width: 7vh;
+    height: 16vh;
+    -moz-border-radius: 8vh / 16vh;
+	-webkit-border-radius: 8vh / 16vh;
+	border-radius: 8vh / 16vh;
+    background-color: #EE7FB3;
+}
+
+#roller-handle{
+    position: absolute;
+    left: 2.4vh;
+    top: 22vh;
+    height: 72vh;
+    width: auto;
+}
+
+#titlecontainer{
+    position: absolute;
+    left: 0;
+    top: 12vh;
+    width: 100vw;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+}
+
+#titleimage{
+    height: 100%;
+    width: auto;
+}
+
+#loginpage{
+    height: 100%;
+    width: 100%;
+    background-color: #fcd9c0;
+}
+
+#auth-status{
+    display: none;
+}
+
+.diy {
+    color: #fff;
+    font-size: 12vh;
+}
+
+.disaster {
+    float: left;
+    color: #fff;
+    display: block;
+    font-size: 5vh;
+}
+
+#roller-handle{
+    height: 72vh;
+    width: auto;
+}
+
+#svgstyles{
+    position: relative;
+    z-index: 10;
+}
+
+.titlecontainer{
+    margin-left: auto;
+    margin-right: auto;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+}
+
+#rotatedcharacter {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    position: absolute;
+    top: 88%;
+    left: 42%;
+}
+
+#headertext {
+    padding: 5px 15px 0px 10px;
+}
+
+.floor {
+    width: 100%;
+    height: 8%;
+    background-color: #49c1e2;
+    position: absolute;
+    bottom: 0px;
+}
+
+#logincontainer{
+    width: 100%;
+    height: 52vh;
+    position: absolute;
+    bottom: 14vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 20;
+}
+
+#loginbtn{
+    color: #fff;
+    font-size: 8vh;
+    padding-bottom: 10px;
+    cursor: pointer;
+}
+
+#skirtingboards {
+    width: 100%;
+    height: 6%;
+    background-color: #fff;
+    position: absolute;
+    bottom: 8%;
+}
+
+.lefttilt {
+    -webkit-transform: rotate(-5deg);
+    -moz-transform: rotate(-5deg);
+    -o-transform: rotate(-5deg);
+    -ms-transform: rotate(-5deg);
+    transform: rotate(-5deg);
+}
+
+.brownbar {
+    width: 175px;
+    height: 10px;
+    background-color: #BA8B6A;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 5;
+    position: relative;
+}
+
+.shadowbar{
+    width: 0;
+	height: 0;
+	border-bottom: 20px solid #D0AE95;
+	border-left: 175px solid transparent;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 3;
+}
+
+.shadowcontainer{
+    position: relative;
+    bottom: 13px;
+}
+
+#paintbucket{
+    height: 14vh;
+    width: auto;
+    position: absolute;
+    bottom: 1vh;
+    left: 65vw;
+    z-index: 10;
+}

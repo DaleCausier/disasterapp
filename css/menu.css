@@ -1,0 +1,208 @@
+@font-face{
+    font-family: "DisasterFont";
+    src: url(../fonts/04b19.ttf);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#menupage{
+    width: 100%;
+    height: 100%;
+    
+}
+
+.roof {
+    background-color: #f39cc4;
+    height:20%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+body {
+    margin:0px;
+    font-family: DisasterFont;
+    height: 100%;
+    width:100%;
+}
+
+html{
+    height: 100%;
+    width: 100%;
+}
+
+#mainnavigation {
+    background-color:#fcd9c0;
+    flex-grow: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    padding: 5px 0px 5px 0px;
+    height: 100%;
+    width: 100%
+}
+
+.menubuttoncontainer{
+    flex-grow: 1;
+}
+
+.contentcontainer {
+    margin: 0px;
+    display: flex;
+    height: 70%;
+    flex-direction: column;
+}
+
+#playbutton {
+    color: #fff;
+    font-size: 8vh;
+}
+
+#playclick{
+    cursor: pointer;
+}
+
+#leaderboardbutton{
+    cursor: pointer;
+}
+
+#aboutbutton{
+    cursor: pointer;
+}
+
+.menubuttons {
+    color: #fff;
+    font-size: 4vh;
+}
+
+.floor {
+    width: 100%;
+    height: 8%;
+    background-color: #49c1e2;
+    position: absolute;
+    bottom: 0px;
+    flex-grow: 0;
+}
+
+#skirtingboards {
+    width: 100%;
+    height: 6%;
+    background-color: #fff;
+    position: absolute;
+    bottom: 8%;
+    flex-grow: 0;
+}
+
+#pictureframe {
+    height: 35%;
+    background-color:#fcd9c0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+}
+
+.diy {
+    color: #fff;
+    font-size: 12vh;
+}
+
+
+.disaster {
+    float: left;
+    color: #fff;
+    display: block;
+    font-size: 5vh;;
+}
+
+#rotatedcharacter {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    padding-bottom: 7%;
+}
+
+#headertext {
+    padding: 5px 15px 0px 10px;
+}
+
+#pictureframeimg {
+    height: 100%;
+    width: auto;    
+}
+
+#resultsdiv{
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+.lefttilt {
+    -webkit-transform: rotate(-5deg);
+    -moz-transform: rotate(-5deg);
+    -o-transform: rotate(-5deg);
+    -ms-transform: rotate(-5deg);
+    transform: rotate(-5deg);
+}
+
+.righttilt{
+    -webkit-transform: rotate(5deg);
+    -moz-transform: rotate(5deg);
+    -o-transform: rotate(5deg);
+    -ms-transform: rotate(5deg);
+    transform: rotate(5deg);
+}
+
+.brownbar {
+    width: 175px;
+    height: 10px;
+    background-color: #BA8B6A;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 5;
+    position: relative;
+}
+
+.shadowbarright{
+    width: 0;
+	height: 0;
+	border-bottom: 20px solid #D0AE95;
+	border-left: 175px solid transparent;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 3;
+}
+
+.shadowbarleft{
+    width: 0;
+	height: 0;
+	border-bottom: 20px solid #D0AE95;
+	border-right: 175px solid transparent;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 3;
+}
+
+.shadowcontainer{
+    position: relative;
+    bottom: 13px;
+}
+
+#paintbucket{
+    height: 14vh;
+    width: auto;
+    position: absolute;
+    bottom: 1vh;
+    left: 65vw;
+    z-index: 10;
+    cursor: pointer;
+}

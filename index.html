@@ -1,0 +1,132 @@
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <title>Login Page</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/login.css"/>
+    <style>*{-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}</style> 
+</head>
+<body>
+    <script>
+        // Load the SDK Asynchronously
+        (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/sdk.js";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        // Init the SDK upon load
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : '789057774580217',
+            cookie     : true,  // enable cookies to allow the server to access 
+                                // the session
+            xfbml      : true,  // parse social plugins on this page
+            version    : 'v2.8' // use graph api version 2.8
+          });
+
+            // listen for and handle auth.statusChange events
+            FB.Event.subscribe('auth.statusChange', function (response) {
+                if (response.authResponse) {
+                  console.log(response.authResponse);
+                  console.log(response.authResponse.accessToken);
+                  console.log(response.authResponse.userID);
+                  var AccessToken = response.authResponse.accessToken;
+                  var UserID = response.authResponse.userID;
+console.log(AccessToken);
+
+                  localStorage.setItem("LocalAccessToken", AccessToken);
+                  localStorage.setItem("LocalUserID", UserID);
+
+                  jQuery.ajax({
+                    type: "POST",
+                    url: 'http://ct6014-causier.studentsites.glos.ac.uk/php/facebook-login.php',
+                    data: {
+                        accesstoken: response.authResponse.accessToken, 
+                        userID: response.authResponse.userID
+                  }
+                  })
+                  .done(function(result) {
+                      window.location.href = 'pages/menu.html';
+                  });
+
+                } else {
+                    // user has not auth'd your app, or is not logged into Facebook
+                }
+            });
+            
+            $('#loginbtn').on('click', function(){
+                FB.login(function(response) {
+                if (response.status === 'connected') {
+                    // Logged into your app and Facebook.
+                    jQuery.ajax({
+                        type: "POST",
+                        url: 'http://ct6014-causier.studentsites.glos.ac.uk/php/facebook-login.php',
+                        data: {
+                            accesstoken: response.authResponse.accessToken, 
+                            userID: response.authResponse.userID
+                    }
+                    })
+                    .done(function(result) {
+                        window.location.href = 'pages/menu.html';
+                    });
+                } else if (response.status === 'not_authorized') {
+                    // The person is logged into Facebook, but not your app.
+                } else {
+                    // The person is not logged into Facebook, so we're not sure if
+                    // they are logged into this app or not.
+                }
+                }, {scope: 'public_profile,email'});
+            });
+        }
+    </script>
+    <div id="loginpage">
+        <div>
+            <!--
+                SVG had to be replaced with a div structure of the same kind using
+                absolute positioning as the SVG tag does not support viewport units
+                in safari and firefox, edge also has a problem with the foreign object tag
+                therefore it has been commented out but left in here to show my efforts in 
+                creating a paint poller using the SVG rect and foreign object tags which 
+                work well in chrome and opera browsers.
+
+                <svg  id="svgstyles" width="100%" height="100%">
+                <rect x="0" y="0" width="100vw" height="20vh" style="fill:#EE7FB3;"/>
+                <rect x="0" y="10vh" rx="8vh" ry="8vh" width="100vw" height="24vh"
+                style="fill:#f39cc4;" />
+                <rect x="2vh" y="14vh" rx="70" ry="50" width="7vh" height="16vh"
+                style="fill:#EE7FB3;"/>
+                <foreignObject x="2.4vh" y="22vh" width="100vw" height="20vh">
+                    <img id="roller-handle" src="images/roller-handle.png">
+                </foreignObject>
+                <foreignObject x="0" y="12vh" width="100%">
+                    <div class="titlecontainer">
+                        <img src="images/diydisaster-title.png" height="100%" width="auto">
+                    </div>
+                </foreignObject>
+            </svg>-->
+            <div id="rollercontainer">
+                <div id="roof"></div>
+                <div id="roller"></div>
+                <div id="rollerinner"></div>
+                <img id="roller-handle" src="images/roller-handle.png">
+                <div id="titlecontainer">
+                    <img id="titleimage" src="images/diydisaster-title.png">
+                </div>
+            </div>
+        </div>
+        <div id="logincontainer">
+            <p id="loginbtn">Login</p>
+            <div class="lefttilt brownbar"></div>
+            <div class="shadowcontainer">
+                <div class="shadowbar"></div>
+            </div>
+        </div>
+        <div id="skirtingboards"></div>
+        <img id="paintbucket" src="images/paint-bucket.png"/>
+        <footer class="floor"></footer>
+    </div>
+</body>
+</html>

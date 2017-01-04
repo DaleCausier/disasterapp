@@ -1,0 +1,291 @@
+/* -------- page CSS --------*/
+@font-face{
+    font-family: "DisasterFont";
+    src: url(../fonts/04b19.ttf);
+}
+
+@keyframes shake {
+
+    0%{
+        left: 0;
+        right: 0;
+        outline: none;
+        border-color: red;
+        box-shadow: 0 0 0px transparent;
+    }
+    5%, 15%, 25%, 35%, 45%, 55%, 65%, 75%, 85%, 95%{
+        left:0; 
+        right: 1vh;
+        outline: none;
+        border-color: red;
+        box-shadow: 0 0 10px red;
+    }
+    10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 100%{
+        left:1vh; 
+        right: 0;
+        outline: none;
+        border-color: red;
+        box-shadow: 0 0 10px red;
+    }
+}
+@-webkit-keyframes shake {
+
+    0%{
+        left: 0;
+        right: 0;
+        outline: none;
+        border-color: red;
+        box-shadow: 0 0 0px transparent;
+    }
+    5%, 15%, 25%, 35%, 45%, 55%, 65%, 75%, 85%, 95%{
+        left:0; 
+        right: 1vh;
+        outline: none;
+        border-color: red;
+        box-shadow: 0 0 10px red;
+    }
+    10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 100%{
+        left:1vh; 
+        right: 0;
+        outline: none;
+        border-color: red;
+        box-shadow: 0 0 10px red;
+    }
+}
+@-moz-keyframes shake {
+
+    0%{
+        left: 0;
+        right: 0;
+        outline: none;
+        border-color: red;
+        box-shadow: 0 0 0px transparent;
+    }
+    5%, 15%, 25%, 35%, 45%, 55%, 65%, 75%, 85%, 95%{
+        left:0; 
+        right: 1vh;
+        outline: none;
+        border-color: red;
+        box-shadow: 0 0 10px red;
+    }
+    10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 100%{
+        left:1vh; 
+        right: 0;
+        outline: none;
+        border-color: red;
+        box-shadow: 0 0 10px red;
+    }
+}
+@-o-keyframes shake {
+
+    0%{
+        left: 0;
+        right: 0;
+        outline: none;
+        border-color: red;
+        box-shadow: 0 0 0px transparent;
+    }
+    5%, 15%, 25%, 35%, 45%, 55%, 65%, 75%, 85%, 95%{
+        left:0; 
+        right: 1vh;
+        outline: none;
+        border-color: red;
+        box-shadow: 0 0 10px red;
+    }
+    10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 100%{
+        left:1vh; 
+        right: 0;
+        outline: none;
+        border-color: red;
+        box-shadow: 0 0 10px red;
+    }
+}
+
+html{
+    height: 100%;
+    width: 100%;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 100%;
+    width: 100%;
+    font-family: DisasterFont;
+}
+
+/* -------- game section --------*/
+
+#gamecontainer{
+    height: 100%;
+    width: 100%;
+    background-color: #49c1e2;
+    display: none;
+    position: absolute;
+    z-index: 0;
+}
+
+#gameinformation{
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 10%;
+}
+
+#pipecontainer{
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.pipe{
+    height: 8vh;
+    width: 100vw;
+    background-color: #a5a5a5;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.hitpoint{
+    height: 10vh;
+    width: 10vh;
+    background-color: #6d6d6d;
+    border-radius: 2vh;
+    position: relative;
+    bottom: 1vh;
+    cursor: pointer;
+}
+
+#scoretext{
+    color: #fff;
+    font-size: 6vh;
+}
+
+#scorecontainer{
+    color: #fff;
+    font-size: 6vh;
+}
+
+#statusupdate{
+    color: #fff;
+    font-size: 6vh;
+}
+
+.burstingpipe{
+    animation-name: shake;
+    animation-duration: 3s;
+}
+
+/* -------- popup section --------*/
+
+#instructionspopup{
+    height: 100vh;
+    width: 100vw;
+    background-color: #f39cc4;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: absolute;
+    z-index: 1;
+}
+
+.instructioncontainer{
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.instructionimage{
+    min-height: 80px;
+    height: 20vh;
+    max-width: 98vw;
+}
+
+.imagecontainer{
+    padding-bottom: 10px;
+}
+
+.instructiontext{
+    color: #fff;
+    font-size: 3.5vh;
+}
+
+#startbutton{
+    text-align: center;
+    color: #fff;
+    padding-bottom: 30px;
+}
+
+#startbutton p{
+    cursor: pointer;
+    font-size: 5vh;
+}
+
+/* -------- gameover popup --------*/
+#gameoverpopup{
+    height: 100vh;
+    width: 100vw;
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    position: absolute;
+    z-index: 2;
+    background-color: #f39cc4;
+    text-align: center;
+    color: #fff;
+    font-size: 4vh;
+}
+
+#gameover{
+    font-size: 6vh;
+}
+
+.scorecontainer{    
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.scoretitle{
+    padding-bottom: 10px;
+}
+
+.scorediv{
+    width: 100%;
+    height: 50%;
+    background-color: rgba(255, 255, 255, 0.3);
+    font-size: 5vh;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#buttoncontainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 5vh;
+    padding-bottom: 3vh;
+}
+
+#buttoncontainer p{
+    cursor: pointer;
+}
+
+#highscorealert{
+    display: none;
+    padding-top: 10px;
+    color: gold;
+}
