@@ -8,7 +8,8 @@
 </head>
 <body>
     <script>
-        // Load the SDK Asynchronously
+$(document).ready(function(){
+    // Load the SDK Asynchronously
         (function(d, s, id) {
           var js, fjs = d.getElementsByTagName(s)[0];
           if (d.getElementById(id)) return;
@@ -81,6 +82,7 @@ console.log(AccessToken);
                 }, {scope: 'public_profile,email'});
             });
         }
+});
     </script>
     <div id="loginpage">
         <div>
